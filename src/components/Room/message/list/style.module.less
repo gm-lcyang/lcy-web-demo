@@ -1,0 +1,27 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 5px 10px;
+  &.self {
+    align-items: flex-end;
+    .content{
+      background: var(--message-self-background-color);
+    }
+  }
+  .name {
+    font-size: 11px;
+    color: var(--username-text-color);
+    opacity: 0.9;
+    margin-bottom: 2px;
+  }
+  .content {
+    width: auto;
+    max-width: 50%;
+    word-wrap: break-word;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background: var(--message-other-background-color);
+    color: var(--message-text-color);
+  }
+}

@@ -1,0 +1,17 @@
+.layout {
+  height: 60px;
+  border-bottom: 1px solid var(--background-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  &.current {
+    background-color: var(--selected-color);
+  }
+  .name {
+    padding: 10px;
+    font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
