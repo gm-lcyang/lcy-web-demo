@@ -25,7 +25,6 @@ export default class ComponentsRoom extends React.Component {
         <div className={style.left}>
           <Search {...this.props} />
           <div className={style.list}>
-            <div className={style.tips}>注：房间按鼠标右键可以删除</div>
             {
               this.props.data.map((t, i) => <List {...this.props} key={i} currentData={t} />)
             }

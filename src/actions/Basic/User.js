@@ -4,9 +4,9 @@ const action = {
   SET: THISACTION + 'SET',
 };
 
-const set = params => dispatch => dispatch({
+const set = num => dispatch => dispatch({
   type: action.SET,
-  params,
+  num,
 });
 
 export default {

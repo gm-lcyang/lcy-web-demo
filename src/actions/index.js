@@ -1,4 +1,4 @@
-import BASIC from './Basic';
+import BASIC from './basic';
 import ROOM from './Room';
 
 export default {

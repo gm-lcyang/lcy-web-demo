@@ -12,6 +12,9 @@ class ContainersRoom extends BaseComponent {
     data: ImmutablePropTypes.list.isRequired,
     loading: PropTypes.bool.isRequired,
     current: PropTypes.string.isRequired,
+    filter: PropTypes.func.isRequired,
+    add: PropTypes.func.isRequired,
+    remove: PropTypes.func.isRequired,
     select: PropTypes.func.isRequired,
     send: PropTypes.func.isRequired,
     userData: ImmutablePropTypes.map.isRequired,
@@ -35,6 +38,9 @@ const mapStateToProps = state => {
 const methods = Actions.ROOM;
 
 const mapDispatchToProps = {
+  filter: methods.filter,
+  add: methods.add,
+  remove: methods.remove,
   select: methods.select,
   send: methods.send,
 };

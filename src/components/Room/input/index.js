@@ -11,20 +11,19 @@ export default class ComponentsInput extends React.Component {
     send: PropTypes.func.isRequired,
     userData: ImmutablePropTypes.map.isRequired,
   }
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.send({
-      num: this.props.data.findIndex(t => t.get('id') === this.props.current),
-      data: this.props.userData.set('content', this.input.value),
-    });
-    this.input.value = '';
+  handleChange = e => {
+    if (e.keyCode === 13 && !e.shiftKey) {
+      this.props.send({
+        num: this.props.data.findIndex(t => t.get('id') === this.props.current),
+        data: this.props.userData.set('content', this.textarea.value),
+      });
+      setTimeout(() => this.textarea.value = '', 0);
+    }
   }
   render() {
     return (
       <div className={`${style.layout} ${this.props.currentData.get('id') === this.props.current ? style.current : ''}`}>
-        <form onSubmit={this.handleSubmit}>
-          <input ref={c => this.input = c} placeholder="Type a message" required />
-        </form>
+        <textarea onKeyDown={e => this.handleChange(e)} ref={c => this.textarea = c} required placeholder="注：shift + 回车 可以换行" />
       </div>
     );
   }

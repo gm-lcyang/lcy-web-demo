@@ -6,18 +6,28 @@ const {
 } = Actions.BASIC.USER;
 
 const initialState = Immutable.fromJS({
-  data: {
+  data: {},
+  loading: false,
+  userList: [{
     id: 'p0',
     name: 'admin',
-  },
-  loading: false,
+  }, {
+    id: 'p1',
+    name: 'Joe',
+  }, {
+    id: 'p2',
+    name: 'Bob',
+  }, {
+    id: 'p3',
+    name: 'Mike',
+  }]
 });
 
 export default (state = initialState, action) => {
   switch (action.type) {
   case actionTypes.SET:
     return state
-      .set('data', action.params);
+      .set('data', state.getIn(['userList', action.num]));
   default:
     return state;
   }

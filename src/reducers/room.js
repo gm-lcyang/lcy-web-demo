@@ -1,68 +1,29 @@
 import Immutable from 'immutable';
 import { combineReducers } from 'redux-immutable';
 import Actions from '@/actions';
+import { data as arr } from '@/publicData';
 
 const {
   action: actionTypes,
 } = Actions.ROOM;
 
 const initialState = Immutable.fromJS({
-  data: [{
-    id: 'r1',
-    name: '房间1',
-    data: [{
-      id: 'p1',
-      name: 'bob',
-      content: 'hello',
-    }, {
-      id: 'p2',
-      name: 'joe',
-      content: 'hi',
-    }],
-  },
-  {
-    id: 'r2',
-    name: '房间2',
-    data: [],
-  },
-  {
-    id: 'r3',
-    name: '房间3',
-    data: [{
-      id: 'p1',
-      name: 'bob',
-      content: '你好',
-    }, {
-      id: 'p2',
-      name: 'joe',
-      content: 'welcome',
-    }],
-  },
-  {
-    id: 'r4',
-    name: '房间4',
-    data: [{
-      id: 'p1',
-      name: 'bob',
-      content: '哈哈哈',
-    }],
-  },
-  {
-    id: 'r5',
-    name: '房间5',
-    data: [],
-  },
-  {
-    id: 'r6',
-    name: '房间6',
-    data: [],
-  }],
+  data: arr,
   loading: false,
   current: '',
 });
 
 const data = (state = initialState, action) => {
   switch (action.type) {
+  case actionTypes.FILTER:
+    return state
+      .update('data', val => val.map(t => t.set('filter', t.get('name').search(action.name) > -1)));
+  case actionTypes.ADD:
+    return state
+      .update('data', val => val.push(Immutable.fromJS({ id: 'r' + state.get('data').size, name: action.name, data: []})));
+  case actionTypes.REMOVE:
+    return state
+      .removeIn(['data', action.num]);
   case actionTypes.SELECT:
     return state
       .setIn(['data', action.params.num, 'show'], true)

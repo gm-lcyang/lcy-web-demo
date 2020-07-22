@@ -1,25 +1,33 @@
 .layout {
   display: flex;
   height: 100%;
+  @width: 200px;
   .left {
-    width: 30%;
+    width: @width;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     border-right: 1px solid var(--background-color);
     .list {
+      .tips {
+        font-size: 12px;
+        text-indent: 10px;
+      }
       flex-grow: 1;
       display: block;
       overflow: scroll;
     }
   }
   .right {
-    width: 70%;
+    width: calc(100vw - @width);
     display: flex;
     flex-direction: column;
     .message {
       height: calc(100vh - 60px);
       overflow: scroll;
+    }
+    .input {
+      height: 60px;
     }
   }
 }
