@@ -11,6 +11,7 @@ const initialState = Immutable.fromJS({
   data: arr,
   loading: false,
   current: '',
+  i: arr.length,
 });
 
 const data = (state = initialState, action) => {
@@ -20,7 +21,8 @@ const data = (state = initialState, action) => {
       .update('data', val => val.map(t => t.set('filter', t.get('name').search(action.name) > -1)));
   case actionTypes.ADD:
     return state
-      .update('data', val => val.push(Immutable.fromJS({ id: 'r' + state.get('data').size, name: action.name, data: []})));
+      .update('data', val => val.push(Immutable.fromJS({ id: 'r' + state.get('i'), name: action.name, data: []})))
+      .set('i', state.get('i') + 1);
   case actionTypes.REMOVE:
     return state
       .removeIn(['data', action.num]);
