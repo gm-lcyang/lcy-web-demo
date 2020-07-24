@@ -3,7 +3,7 @@ import axios from 'axios';
 const querystring = require('querystring');
 
 const ajax = (url, method, params, payload) => {
-  const fullUrl = /^http/.test(url) ? url : url.replace(/\/$/, '') + '/'  + url;
+  const fullUrl = /^http/.test(url) ? url : url;
   let formData;
   if (payload) {
     formData = params;
@@ -22,6 +22,7 @@ const ajax = (url, method, params, payload) => {
     data: ( method !== 'get' ? formData : {} ),
     headers: {
       Authorization: localStorage.getItem('token'),
+      'x-csrf-token': document.getElementById('_csrf_').value,
     },
   }).then(response => {
     if (response.data.success) {
