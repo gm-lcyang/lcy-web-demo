@@ -29,6 +29,7 @@
         "no-console": "off",
         "no-debugger": "off",
         "no-case-declarations": "off",
+        "no-cond-assign": "off",
         "indent": [
             "error",
             2

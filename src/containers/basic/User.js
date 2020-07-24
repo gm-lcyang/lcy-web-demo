@@ -13,6 +13,7 @@ class ContainersUser extends BaseComponent {
     loading: PropTypes.bool.isRequired,
     userList: ImmutablePropTypes.list.isRequired,
     set: PropTypes.func.isRequired,
+    setLogout: PropTypes.func.isRequired,
   }
   render() {
     return <ThisIndex {...this.props} />;
@@ -28,10 +29,16 @@ const mapStateToProps = state => {
   };
 };
 
-const methods = Actions.BASIC.USER;
+const {
+  BASIC: {
+    USER: methods,
+    LOGIN: loginMethods,
+  }
+} = Actions;
 
 const mapDispatchToProps = {
   set: methods.set,
+  setLogout: loginMethods.setLogout,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ContainersUser));

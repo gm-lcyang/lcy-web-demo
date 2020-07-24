@@ -7,6 +7,7 @@ export default class ComponentsUser extends React.Component {
   static propTypes = {
     userList: ImmutablePropTypes.list.isRequired,
     set: PropTypes.func.isRequired,
+    setLogout: PropTypes.func.isRequired,
   }
   render() {
     return (
@@ -16,6 +17,7 @@ export default class ComponentsUser extends React.Component {
             this.props.userList.map((t, i) => <option key={i} value={t.get('id')}>{t.get('name')}</option>)
           }
         </select>
+        <button onClick={this.props.setLogout}>登出</button>
       </div>
     );
   }

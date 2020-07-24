@@ -4,7 +4,7 @@ import BaseComponent from '@/components/basic/BaseComponent';
 import { connect } from 'react-redux';
 import { withRouter, Route } from 'react-router-dom';
 import App from '@/components/basic/App';
-import Login from '@/components/basic/Login';
+import Login from './Login';
 
 class Root extends BaseComponent {
   static propTypes = {
