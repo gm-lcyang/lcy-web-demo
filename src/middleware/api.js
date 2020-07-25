@@ -75,6 +75,18 @@ export default () => next => action => {
         params,
         extraData,
       }));
+      next(actionWith({
+        type: 'MESSAGE_SHOW',
+        params: {
+          data: {
+            title: '错误',
+            content: '暂无内容',
+          },
+          type: 'error',
+        },
+      }));
+      clearTimeout(window.messageTimer);
+      window.messageTimer = setTimeout(() => next(actionWith({ type: 'MESSAGE_HIDE' })), 8000);
       return Promise.reject(error, '请求失败！');
     }
   );

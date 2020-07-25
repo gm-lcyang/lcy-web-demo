@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import BaseComponent from '@/components/basic/BaseComponent';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import Actions from '@/actions';
 import ThisIndex from '@/components/Room';
 
@@ -45,4 +44,4 @@ const mapDispatchToProps = {
   send: methods.send,
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ContainersRoom));
+export default connect(mapStateToProps, mapDispatchToProps)(ContainersRoom);

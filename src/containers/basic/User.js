@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import BaseComponent from '@/components/basic/BaseComponent';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import Actions from '@/actions';
 import ThisIndex from '@/components/basic/User';
 
@@ -41,4 +40,4 @@ const mapDispatchToProps = {
   setLogout: loginMethods.setLogout,
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ContainersUser));
+export default connect(mapStateToProps, mapDispatchToProps)(ContainersUser);
