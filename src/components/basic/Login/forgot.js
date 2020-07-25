@@ -17,7 +17,7 @@ class ComponentsLogin extends React.Component {
   }
   err = name => this.props.form.getFieldError(name) && <div className={style.error}>{this.props.form.getFieldError(name).join(',')}</div>
   render() {
-    const { getFieldDecorator } = this.props.form;
+    const { getFieldDecorator, getFieldsError } = this.props.form;
     return (
       <div className={style.layout}>
         <div className={style.field}>
@@ -33,7 +33,7 @@ class ComponentsLogin extends React.Component {
           })(<input />)}
           {this.err('email')}
         </div>
-        <button onClick={this.submit} className={style.primary}>取回密码</button>
+        <button onClick={this.submit} className={`${style.primary} ${!Object.values(getFieldsError()).filter(t => t).length ? '' : style.error}`}>取回密码</button>
         <button onClick={() => this.props.changeType('Login')}>返回登录</button>
       </div>
     );

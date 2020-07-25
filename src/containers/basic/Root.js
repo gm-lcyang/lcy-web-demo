@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter, Route } from 'react-router-dom';
 import App from '@/components/basic/App';
 import Login from './Login';
+import Message from './Message';
 
 class Root extends BaseComponent {
   static propTypes = {
@@ -12,9 +13,14 @@ class Root extends BaseComponent {
   }
   render() {
     return (
-      this.props.isLogin ?
-        <Route path='/' component={App} /> :
-        <Route path='/' component={Login} />
+      <React.Fragment>
+        <Message />
+        {
+          this.props.isLogin ?
+            <Route path='/' component={App} /> :
+            <Route path='/' component={Login} />
+        }
+      </React.Fragment>
     );
   }
 }

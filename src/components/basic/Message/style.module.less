@@ -1,0 +1,27 @@
+.modal {
+  position: fixed;
+  width: 100%;
+  top: 10px;
+  text-align: center;
+  z-index: 999;
+  .layout {
+    display: inline-block;
+    padding: 4px 12px;
+    background: white;
+    &.error {
+      color: var(--color-red);
+      border: 1px solid var(--color-red);
+      border-radius: 4px;
+      &::before {
+        content: 'x';
+        margin-right: 4px;
+      }
+    }
+    .title {
+      font-size: var(--text-heading-size);
+    }
+    .content {
+      font-size: var(--text-micro-size);
+    }
+  }
+}

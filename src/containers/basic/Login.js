@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BaseComponent from '@/components/basic/BaseComponent';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import Actions from '@/actions';
 import ThisIndex from '@/components/basic/Login';
 
@@ -25,4 +24,4 @@ const mapDispatchToProps = {
   setLogin: methods.setLogin,
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(ContainersLogin));
+export default connect(null, mapDispatchToProps)(ContainersLogin);
